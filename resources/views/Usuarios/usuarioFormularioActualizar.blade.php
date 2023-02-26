@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset("usuariosCss/usuarioFormulario.Css?1.0")}}">
+    <title>Formulario actualizar usuario</title>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
+        </ul>
+      </nav>
+      <br>
+      {{session("usuarioRepite")}}
+      {{session("usuarioNoExiste")}}
+
+      <h1>Formulario de actualizar usuario</h1>
+      <form action="{{route("storeActualizarUsuario")}}" method="GET">
+        @csrf
+        <input type="hidden" value="{{$usuario->id}}" name="id">
+        <input type="hidden" value="{{$usuario->cedula}}" name="oldCedula">
+
+        <label for="cedula">Cédula:</label>
+        <input type="text" name="cedula" value="{{$usuario->cedula}}" required>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" name="nombre" value="{{$usuario->nombre}}" required>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" name="telefono" value="{{$usuario->telefono}}" required>
+        <label for="direccion">Dirección:</label>
+        <textarea id="direccion" name="direccion" rows="4" required>{{$usuario->direccion}}</textarea>
+        <label for="prestamo">Préstamo:</label>
+        <input type="number" name="prestamo" value="{{$usuario->prestamo}}" required>
+        <label for="intereses">Digite el % en intereses ganados:</label>
+        <input type="number" name="intereses" value="{{$usuario->intereses}}" required>
+        <label for="periodo">Selecciona el metodo de pago:</label>
+        <select name="metodoPago" required>
+          <option value="{{$usuario->metodoPago}}">{{$usuario->metodoPago}}</option>
+          <option value="Día">Día</option>
+          <option value="Semana">Semana</option>
+          <option value="Quincena">Quincena</option>
+          <option value="Mes">Mes</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Actualizar datos">
+      </form>
+</body>
+</html>
