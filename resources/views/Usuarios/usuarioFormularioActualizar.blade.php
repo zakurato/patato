@@ -38,10 +38,10 @@
         <label for="periodo">Selecciona el metodo de pago:</label>
         <select name="metodoPago" required>
           <option value="{{$usuario->metodoPago}}">{{$usuario->metodoPago}}</option>
-          <option value="Día">Día</option>
-          <option value="Semana">Semana</option>
-          <option value="Quincena">Quincena</option>
-          <option value="Mes">Mes</option>
+          <option value="Diario">Diario</option>
+          <option value="Semanal">Semanal</option>
+          <option value="Quincenal">Quincenal</option>
+          <option value="Mensual">Mensual</option>
         </select>
         <br><br>
         <input type="submit" value="Actualizar datos">
