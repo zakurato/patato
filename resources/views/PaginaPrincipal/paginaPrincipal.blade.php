@@ -26,7 +26,7 @@
       <li></li>
       <form class="form-inline my-2 my-lg-0" action="{{route("paginaPrincipal")}}" method="GET">
         <input class="form-control mr-sm-2" type="text" name="txtBuscar" value="{{$txtBuscar}}" placeholder="Buscar por nombre...">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>
     </div>
   </nav>
