@@ -94,7 +94,12 @@
             </tbody>
           </table>
           <br>
-          <button class="btnAbono" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$usuario->telefono}}&text=Nombre:%20{{$usuario->nombre}}%0AAbono:%20{{$abonoUltimo->abono}}%0ASaldo actual:%20{{$abonoUltimo->saldo}}%0AFecha y hora:%20{{$abonoUltimo->created_at}}'">Enviar saldo</button>
+
+          @php
+            $date = date('Y-m-d', strtotime($abonoUltimo->created_at));
+          @endphp
+
+          <button class="btnAbono" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$usuario->telefono}}&text=Nombre:%20{{$usuario->nombre}}%0AAbono:%20{{$abonoUltimo->abono}}%0ASaldo actual:%20{{$abonoUltimo->saldo}}%0AFecha:%20{{$date}}'">Enviar saldo</button>
         </div>
       </div>
 
