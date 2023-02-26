@@ -147,8 +147,7 @@
               </form>
             </td>
             <td>
-              <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-                @method("delete")
+              <form action="{{route("prestamoDeudaForm")}}" method="GET">
                 @csrf
                 <input type="hidden" value="{{$item->id}}" name="id">
                 <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
@@ -213,8 +212,7 @@
               </form>
             </td>
             <td>
-              <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-                @method("delete")
+              <form action="{{route("prestamoDeudaForm")}}" method="GET">
                 @csrf
                 <input type="hidden" value="{{$item->id}}" name="id">
                 <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
@@ -277,8 +275,7 @@
             </form>
           </td>
           <td>
-            <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-              @method("delete")
+            <form action="{{route("prestamoDeudaForm")}}" method="GET">
               @csrf
               <input type="hidden" value="{{$item->id}}" name="id">
               <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
