@@ -18,7 +18,7 @@
               @csrf
               <input type="hidden" name="id" value="{{$usuario->id}}">
               <input type="text" name="txtBuscar" placeholder="Buscar por fecha...">
-              <button type="submit"><i class="fa fa-search"></i></button>
+              <button style="color: black" type="submit"><i class="fa fa-search"></i></button>
             </form>
           </li>
         </ul>
