@@ -4,32 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset("paginaPrincipalCss/paginaPrincipal.Css?1.0")}}">
+    <link rel="stylesheet" href="{{asset("paginaPrincipalCss/paginaPrincipal.Css")}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Pagina principal</title>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="navbar-collapse">
-      <ul class="navbar-nav">
-        <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
-        <li><a href="{{route("formRegistrarUsuario")}}">Registrar usuario</a></li>
-        <li class="nav-item"><a href="#" class="nav-link"></a></li>
-        <li class="nav-item">
+    <nav>
+        <ul>
+          <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
+          <li><a href="{{route("formRegistrarUsuario")}}">Registrar usuario</a></li>
+          <li class="search">
+            <form action="{{route("paginaPrincipal")}}" method="GET">
+              @csrf
+              <input type="text" name="txtBuscar" value="{{$txtBuscar}}" placeholder="Buscar por nombre...">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </li>
           <form action="{{route("deslogueo")}}" method="POST">
             @csrf
             <li><a href="#" onclick="this.closest('form').submit()">Cerrar Sesión</a></li>
           </form>
-        </li>
-      </ul>
-      <li></li>
-      <form class="form-inline my-2 my-lg-0" action="{{route("paginaPrincipal")}}" method="GET">
-        <input class="form-control mr-sm-2" type="text" name="txtBuscar" value="{{$txtBuscar}}" placeholder="Buscar por nombre...">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
+        </ul>
+      </nav>
       <br>
       {{session("guardadoCorrectamente")}}
       {{session("eliminadoCorrectamente")}}
@@ -268,13 +265,6 @@
 
 </body>
 
-<script>
-  const navbarToggler = document.querySelector('.navbar-toggler');
-const navbarCollapse = document.querySelector('.navbar-collapse');
 
-navbarToggler.addEventListener('click', () => {
-  navbarCollapse.classList.toggle('show');
-});
-</script>
 
 </html>
