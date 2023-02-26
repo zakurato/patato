@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset("paginaPrincipalCss/paginaPrincipal.Css")}}">
+    <link rel="stylesheet" href="{{asset("paginaPrincipalCss/paginaPrincipal.Css?2.0")}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Pagina principal</title>
@@ -83,6 +83,13 @@
                 <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
               </form>
             </td>
+            <td>
+              <form action="{{route("prestamoDeudaForm")}}" method="GET">
+                @csrf
+                <input type="hidden" value="{{$item->id}}" name="id">
+                <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
+              </form>
+            </td>
           </tr>
           @endif
           @endforeach
@@ -137,6 +144,14 @@
                 @csrf
                 <input type="hidden" value="{{$item->id}}" name="id">
                 <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+              </form>
+            </td>
+            <td>
+              <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+                @method("delete")
+                @csrf
+                <input type="hidden" value="{{$item->id}}" name="id">
+                <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
               </form>
             </td>
           </tr>
@@ -197,6 +212,14 @@
                 <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
               </form>
             </td>
+            <td>
+              <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+                @method("delete")
+                @csrf
+                <input type="hidden" value="{{$item->id}}" name="id">
+                <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
+              </form>
+            </td>
           </tr>
           @endif
         @endforeach
@@ -251,6 +274,14 @@
               @csrf
               <input type="hidden" value="{{$item->id}}" name="id">
               <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+            </form>
+          </td>
+          <td>
+            <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+              @method("delete")
+              @csrf
+              <input type="hidden" value="{{$item->id}}" name="id">
+              <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
             </form>
           </td>
         </tr>

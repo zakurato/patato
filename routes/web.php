@@ -36,3 +36,9 @@ Route::get("/storeActualizarUsuario",[UsuarioController::class,"storeActualizarU
 Route::get("/aplicarAbono",[UsuarioController::class,"aplicarAbono"])->name("aplicarAbono")->middleware("auth");
 
 Route::post("/storeAbono",[UsuarioController::class,"storeAbono"])->name("storeAbono")->middleware("auth");
+
+Route::get("/prestamoDeudaForm",[UsuarioController::class,"prestamoDeudaForm"])->name("prestamoDeudaForm")->middleware("auth");
+
+Route::get("/storeActualizarUsuarioPrestamoDeuda",[UsuarioController::class,"storeActualizarUsuarioPrestamoDeuda"])->name("storeActualizarUsuarioPrestamoDeuda")->middleware("auth");
+
+

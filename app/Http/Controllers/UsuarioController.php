@@ -75,7 +75,7 @@ class UsuarioController extends Controller
 
         if($usuario->cedula == $request->cedula){
             $interesesGanados = $request->prestamo * ($request->intereses/100);
-            $saldo = $request->prestamo + $interesesGanados;
+            //$saldo = $request->prestamo + $interesesGanados;
     
             $usuario=Usuario::where('id',$request->id)->first();
     
@@ -86,8 +86,8 @@ class UsuarioController extends Controller
             $usuario->prestamo = $request->prestamo;
             $usuario->intereses = $request->intereses;
             $usuario->metodoPago = $request->metodoPago;
-            $usuario->saldo = $saldo;
-            $usuario->saldoRebajado = $saldo;
+            //$usuario->saldo = $saldo;
+            //$usuario->saldoRebajado = $saldo;
             $usuario->interesesGanados = $interesesGanados;
     
             $usuario->save();
@@ -111,7 +111,7 @@ class UsuarioController extends Controller
                 return redirect()->route("actualizarUsuario",compact("id"))->withInput();
             }else{
                 $interesesGanados = $request->prestamo * ($request->intereses/100);
-                $saldo = $request->prestamo + $interesesGanados;
+                //$saldo = $request->prestamo + $interesesGanados;
         
                 $usuario=Usuario::where('id',$request->id)->first();
         
@@ -122,8 +122,8 @@ class UsuarioController extends Controller
                 $usuario->prestamo = $request->prestamo;
                 $usuario->intereses = $request->intereses;
                 $usuario->metodoPago = $request->metodoPago;
-                $usuario->saldo = $saldo;
-                $usuario->saldoRebajado = $saldo;
+                //$usuario->saldo = $saldo;
+                //$usuario->saldoRebajado = $saldo;
                 $usuario->interesesGanados = $interesesGanados;
         
                 $usuario->save();
@@ -183,4 +183,25 @@ class UsuarioController extends Controller
 
         }
     }
+
+    public function prestamoDeudaForm(Request $request){
+        $usuario = Usuario::where('id',$request->id)->first();
+        return view("Usuarios.usuarioFormularioPrestamoDeuda",compact("usuario"));
+    }
+
+    public function storeActualizarUsuarioPrestamoDeuda(Request $request){
+        //return $request;
+
+        $usuario = Usuario::where('id',$request->id)->first();
+
+        $usuario->prestamo = $request->prestamo;
+        $usuario->intereses = $request->intereses;
+        $usuario->saldo =  $request->prestamo + ($request->prestamo * ($request->intereses/100)) + $usuario->saldoRebajado;
+        $usuario->saldoRebajado = $request->prestamo + ($request->prestamo * ($request->intereses/100)) + $usuario->saldoRebajado;
+
+        $usuario->save();
+
+        return redirect()->route("paginaPrincipal"); 
+    }
+
 }
