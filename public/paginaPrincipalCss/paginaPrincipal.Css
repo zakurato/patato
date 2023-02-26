@@ -13,7 +13,7 @@ nav ul {
 }
 
 nav li {
-  display: inline-block;
+  display: inline-flex;
 }
 
 nav li a {
