@@ -152,6 +152,12 @@ class UsuarioController extends Controller
 
     public function storeAbono(Request $request){
 
+        if($request->abono > $request->saldoRebajado){
+            $id = $request->id;
+            session()->flash("abonoExcedido","El abono que desea aplicar es mayor al saldo actual");
+            return redirect()->route("aplicarAbono",compact("id")); 
+        }else{
+
         $id = $request->id;
 
         $usuario=Usuario::where('id',$request->id)->first(); //obtengo los datos completos del usuario
@@ -174,5 +180,7 @@ class UsuarioController extends Controller
 
 
         //return view("Abonos.indexAbono",compact("usuario","abonos"));
+
+        }
     }
 }

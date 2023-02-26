@@ -26,6 +26,8 @@
 
       <br>
       {{session("abonoAplicado")}}
+      {{session("abonoExcedido")}}
+
       <br>
       <form action="">
       <label for="cedula">Cédula:</label>
