@@ -18,7 +18,7 @@
             <form action="{{route("paginaPrincipal")}}" method="GET">
               @csrf
               <input type="text" name="txtBuscar" value="{{$txtBuscar}}" placeholder="Buscar por nombre...">
-              <button type="submit"><i class="fa fa-search"> Buscar</i></button>
+              <button style="color: black" type="submit"><i class="fa fa-search"> Buscar</i></button>
             </form>
           </li>
           <form action="{{route("deslogueo")}}" method="POST">
