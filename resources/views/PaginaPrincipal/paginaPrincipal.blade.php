@@ -23,7 +23,7 @@
           </li>
           <form action="{{route("deslogueo")}}" method="POST">
             @csrf
-            <li><a href="#" onclick="this.closest('form').submit()">Cerrar Sesiónn</a></li>
+            <li><a href="#" onclick="this.closest('form').submit()">Cerrar Sesión</a></li>
           </form>
         </ul>
       </nav>
