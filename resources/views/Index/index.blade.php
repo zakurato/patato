@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-		<h1>Patat2o</h1>
+		<h1>Patato</h1>
 		<form action="{{route("verificarLogin")}}" method="GET">
 			@csrf
 			<label for="username">Correo:</label>
