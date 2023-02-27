@@ -13,7 +13,7 @@ class HomeController extends Controller
     }
     public function verificarLogin(Request $request){
 
-        $request =  request()->only("email","password");
+        $request =  request()->only("name","password");
         if(Auth::attempt($request)){
             request()->session()->regenerate();
             //return "logeado correctamente";
