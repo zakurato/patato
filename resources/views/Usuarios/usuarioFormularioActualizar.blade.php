@@ -28,7 +28,7 @@
         <label for="nombre">Nombre completo:</label>
         <input type="text" name="nombre" value="{{$usuario->nombre}}" required>
         <label for="telefono">Teléfono:</label>
-        <input type="tel" name="telefono" value="{{$usuario->telefono}}" required>
+        <input type="tel" name="telefono" value="{{$usuario->telefono}}" required inputmode="numeric">
         <label for="direccion">Dirección:</label>
         <textarea id="direccion" name="direccion" rows="4" required>{{$usuario->direccion}}</textarea>
         <label for="prestamo">Préstamo:</label>

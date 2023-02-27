@@ -52,7 +52,7 @@
         <input type="hidden" name="id" value="{{$usuario->id}}">
 
         <label for="abono">Digite el abono:</label>
-        <input type="number" name="abono" min="0" pattern="^\d+$" required>
+        <input type="number" name="abono" min="0" pattern="^\d+$" required inputmode="numeric">
         <button class="btnAbono" type="submit">Aplicar abono</button>
     </form>
 
