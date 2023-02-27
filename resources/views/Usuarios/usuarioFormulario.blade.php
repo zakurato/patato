@@ -26,13 +26,13 @@
         <label for="nombre">Nombre completo:</label>
         <input type="text" name="nombre" value="{{old('nombre')}}" required>
         <label for="telefono">Teléfono:</label>
-        <input type="tel" name="telefono" value="{{old("telefono")}}" required>
+        <input type="tel" name="telefono" value="{{old("telefono")}}" required inputmode="numeric">
         <label for="direccion">Dirección:</label>
         <textarea id="direccion" name="direccion" rows="4" required>{{old("direccion")}}</textarea>
         <label for="prestamo">Préstamo:</label>
-        <input type="number" name="prestamo" value="{{old("prestamo")}}" required>
+        <input type="number" name="prestamo" value="{{old("prestamo")}}" required inputmode="numeric">
         <label for="intereses">Digite el % en intereses ganados:</label>
-        <input type="number" name="intereses" value="{{old("intereses")}}" required>
+        <input type="number" name="intereses" value="{{old("intereses")}}" required inputmode="numeric">
         <label for="periodo">Selecciona el metodo de pago:</label>
         <select name="metodoPago" required>
           <option value="{{old("metodoPago")}}">{{old("metodoPago")}}</option>
