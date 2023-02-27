@@ -24,7 +24,7 @@
         <input type="hidden" value="{{$usuario->cedula}}" name="oldCedula">
 
         <label for="cedula">Cédula:</label>
-        <input style="color: darkcyan" type="text" name="cedula" value="{{$usuario->cedula}}" required>
+        <input style="background-color: darkcyan" type="text" name="cedula" value="{{$usuario->cedula}}" required>
         <label for="nombre">Nombre completo:</label>
         <input type="text" name="nombre" value="{{$usuario->nombre}}" required>
         <label for="telefono">Teléfono:</label>
