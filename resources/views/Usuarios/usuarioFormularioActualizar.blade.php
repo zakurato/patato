@@ -32,9 +32,9 @@
         <label for="direccion">Dirección:</label>
         <textarea id="direccion" name="direccion" rows="4" required>{{$usuario->direccion}}</textarea>
         <label for="prestamo">Préstamo:</label>
-        <input type="number" name="prestamo" value="{{$usuario->prestamo}}" readonly>
+        <input style="background-color: cadetblue" type="number" name="prestamo" value="{{$usuario->prestamo}}" readonly>
         <label for="intereses">Porcentaje en intereses ganados:</label>
-        <input type="number" name="intereses" value="{{$usuario->intereses}}" readonly>
+        <input style="background-color: cadetblue" type="number" name="intereses" value="{{$usuario->intereses}}" readonly>
         <label for="periodo">Selecciona el metodo de pago:</label>
         <select name="metodoPago" required>
           <option value="{{$usuario->metodoPago}}">{{$usuario->metodoPago}}</option>
