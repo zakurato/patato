@@ -28,18 +28,15 @@ class HomeController extends Controller
 
         //return $request;
 
-        if($request == ""){
-            $usuarios = Usuario::all();
-            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar"));
-        }else{
+            $sumaAcobrar = Usuario::sum("saldoRebajado");
 
             $txtBuscar = $request->input('txtBuscar');
             $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->get();
 
             //$usuarios = Usuario::all();
-            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar"));
+            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar"));
 
-        }
+        
     
     }
 
