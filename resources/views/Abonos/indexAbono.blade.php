@@ -30,26 +30,24 @@
 
       <br>
       <form action="">
-      <label for="cedula">Cédula:</label>
-      <input type="tel" name="cedula" value="{{$usuario->cedula}}" readonly>
       <label for="nombre">Nombre completo:</label>
-      <input type="tel" name="nombre" value="{{$usuario->nombre}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="nombre" value="{{$usuario->nombre}}" readonly>
       <label for="telefono">Teléfono:</label>
-      <input type="tel" name="telefono" value="{{$usuario->telefono}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="telefono" value="{{$usuario->telefono}}" readonly>
       <label for="direccion">Dirección:</label>
-      <textarea id="direccion" name="direccion" rows="4" readonly>{{$usuario->direccion}}</textarea>
+      <textarea style="background-color: cadetblue" id="direccion" name="direccion" rows="4" readonly>{{$usuario->direccion}}</textarea>
       <label for="prestamo">Préstamo:</label>
-      <input type="number" name="prestamo" value="{{$usuario->prestamo}}" readonly>
+      <input style="background-color: cadetblue" type="number" name="prestamo" value="{{$usuario->prestamo}}" readonly>
       <label for="intereses">Digite el % en intereses ganados:</label>
-      <input type="number" name="intereses" value="{{$usuario->intereses}}" readonly>
+      <input style="background-color: cadetblue" type="number" name="intereses" value="{{$usuario->intereses}}" readonly>
       <label for="periodo">Selecciona el metodo de pago:</label>
-      <input type="tel" name="metodoPago" value="{{$usuario->metodoPago}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="metodoPago" value="{{$usuario->metodoPago}}" readonly>
       <label for="interesesGanados">Intereses ganados:</label>
-      <input type="tel" name="interesesGanados" value="{{$usuario->interesesGanados}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="interesesGanados" value="{{$usuario->interesesGanados}}" readonly>
       <label for="saldo">Saldo inicial:</label>
-      <input type="tel" name="saldo" value="{{$usuario->saldo}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="saldo" value="{{$usuario->saldo}}" readonly>
       <label for="saldoRebajado">Saldo Actual:</label>
-      <input type="tel" name="saldo" value="{{$usuario->saldoRebajado}}" readonly>
+      <input style="background-color: cadetblue" type="tel" name="saldo" value="{{$usuario->saldoRebajado}}" readonly>
       <br><br>      
     </form>
 
@@ -99,7 +97,7 @@
             $date = date('Y-m-d', strtotime($abonoUltimo->created_at));
           @endphp
 
-          <button class="btnAbono" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$usuario->telefono}}&text=Nombre:%20{{$usuario->nombre}}%0AAbono:%20{{$abonoUltimo->abono}}%0ASaldo actual:%20{{$abonoUltimo->saldo}}%0AFecha:%20{{$date}}'">Enviar saldo</button>
+          <button class="btnAbono" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$usuario->telefono}}&text=Nombre:%20{{$usuario->nombre}}%0AAbono:%20₡{{$abonoUltimo->abono}}%0ASaldo actual:%20₡{{$abonoUltimo->saldo}}%0AFecha:%20{{$date}}'">Enviar saldo</button>
         </div>
       </div>
 
