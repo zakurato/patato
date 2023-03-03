@@ -31,7 +31,7 @@ class HomeController extends Controller
             $sumaAcobrar = Usuario::sum("saldoRebajado");
 
             $txtBuscar = $request->input('txtBuscar');
-            $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->get();
+            $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->get()->sortByDesc('nombre');
 
             //$usuarios = Usuario::all();
             return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar"));
