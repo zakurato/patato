@@ -97,6 +97,7 @@
                 </form>
             </td>
             </tr>
+            <td style="background-color: white" colspan="5"></td>
             @endif
             @endforeach
             </table>
@@ -162,6 +163,7 @@
                 </form>
             </td>
             </tr>
+            <td style="background-color: white" colspan="5"></td>
             @endif
             @endforeach
     
@@ -296,6 +298,7 @@
             </form>
         </td>
         </tr>
+        <td style="background-color: white" colspan="5"></td>
         @endif
         @endforeach
 
