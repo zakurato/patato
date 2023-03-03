@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -29,12 +31,13 @@ class HomeController extends Controller
         //return $request;
 
             $sumaAcobrar = Usuario::sum("saldoRebajado");
+            $clientes = DB::table('usuarios')->count();
 
             $txtBuscar = $request->input('txtBuscar');
             $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
 
             //$usuarios = Usuario::all();
-            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar"));
+            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar","clientes"));
 
         
     

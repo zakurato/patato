@@ -34,6 +34,9 @@
       {{session("actualizadoCorrectamente")}}
 
       <br><br>
+      <label for="total">Clientes</label>
+      <input id="total-input" type="text" value="{{$clientes}}" readonly>
+      <br><br>
       <label for="total">Total a cobrar a clientes</label>
       <input id="total-input" type="text" value="₡{{$sumaAcobrar}}" readonly>
 
