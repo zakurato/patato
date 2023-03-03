@@ -37,70 +37,82 @@
       <label for="total">Total a cobrar a clientes</label>
       <input id="total-input" type="text" value="₡{{$sumaAcobrar}}" readonly>
 
+      <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <br><br>
       <h1>Tabla Clientes Diario</h1>
 
       <div class="table-container">
         <div class="table-responsive">
+          @foreach ($usuarios as $item)
+          @if ($item->metodoPago == "Diario")
+          <select class="my-select">
+            <option disabled selected>{{$item->nombre}}</option>
+            <option disabled>Teléfono: {{$item->telefono}}</option>
+            <option disabled>Prestamo: {{$item->prestamo}}</option>
+            <option disabled>Saldo inicial: {{$item->saldo}}</option>
+            <option disabled>Saldo actual: {{$item->saldoRebajado}}</option>
+            <option disabled>Metodo de pago: {{$item->metodoPago}}</option>
+            <table>
+          </select>
           <table>
-            @foreach ($usuarios as $item)
-            @if ($item->metodoPago == "Diario")
             <tr>
-              <td colspan="5" style="text-align: center">{{$item->nombre}}</td>
-            </tr>
-            
-            <tr>
-              <td>Teléfono</td>
-              <td>Prestamo</td>
-              <td>Saldo inicial</td>
-              <td>Saldo actual</td>
-              <td>Metodo de pago</td>
-            </tr>
-    
-            <tr>
-              <td>{{$item->telefono}}</td>
-              <td>{{$item->prestamo}}</td>
-              <td>{{$item->saldo}}</td>
-              <td>{{$item->saldoRebajado}}</td>
-              <td>{{$item->metodoPago}}</td>
-            </tr>
-    
-            <tr>
-              <td>
-                 <form action="{{route("aplicarAbono")}}" method="GET">
+                <td>
+                  <form action="{{route("aplicarAbono")}}" method="GET">
+                      @csrf
+                      <input type="hidden" name="id" value="{{$item->id}}">
+                      <button class="btnAbonar" type="submit">Aplicar abono</button>
+                    </form>
+                </td>
+                <td>
+                  <form action="{{route("actualizarUsuario")}}" method="GET">
                     @csrf
-                    <input type="hidden" name="id" value="{{$item->id}}">
-                    <button class="btnAbonar" type="submit">Aplicar abono</button>
+                    <button class="btnActualizar" type="submit">Editar</button>
+                    <input type="hidden" value="{{$item->id}}" name="id">
                   </form>
               </td>
-              <td>
-                <form action="{{route("actualizarUsuario")}}" method="GET">
-                  @csrf
-                  <button class="btnActualizar" type="submit">Editar</button>
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                </form>
-            </td>
-              <td>
-                <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-                  @method("delete")
-                  @csrf
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                  <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
-                </form>
-            </td>
-              <td colspan="2">
-                <form action="{{route("prestamoDeudaForm")}}" method="GET">
-                  @csrf
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                  <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
-                </form>
-            </td>
+                <td>
+                  <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+                    @method("delete")
+                    @csrf
+                    <input type="hidden" value="{{$item->id}}" name="id">
+                    <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                  </form>
+              </td>
+                <td colspan="2">
+                  <form action="{{route("prestamoDeudaForm")}}" method="GET">
+                    @csrf
+                    <input type="hidden" value="{{$item->id}}" name="id">
+                    <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
+                  </form>
+              </td>
             </tr>
-            <td style="background-color: white" colspan="5"></td>
-            @endif
-            @endforeach
-            </table>
+          </table>
+          @endif
+          @endforeach
       <div>
     </div>
       
@@ -109,65 +121,52 @@
 
       <div class="table-container">
         <div class="table-responsive">
+          @foreach ($usuarios as $item)
+          @if ($item->metodoPago == "Semanal")
+          <select class="my-select">
+            <option disabled selected>{{$item->nombre}}</option>
+            <option disabled>Teléfono: {{$item->telefono}}</option>
+            <option disabled>Prestamo: {{$item->prestamo}}</option>
+            <option disabled>Saldo inicial: {{$item->saldo}}</option>
+            <option disabled>Saldo actual: {{$item->saldoRebajado}}</option>
+            <option disabled>Metodo de pago: {{$item->metodoPago}}</option>
+            <table>
+          </select>
           <table>
-            @foreach ($usuarios as $item)
-            @if ($item->metodoPago == "Semanal")
             <tr>
-              <td colspan="5" style="text-align: center">{{$item->nombre}}</td>
-            </tr>
-            
-            <tr>
-              <td>Teléfono</td>
-              <td>Prestamo</td>
-              <td>Saldo inicial</td>
-              <td>Saldo actual</td>
-              <td>Metodo de pago</td>
-            </tr>
-    
-            <tr>
-              <td>{{$item->telefono}}</td>
-              <td>{{$item->prestamo}}</td>
-              <td>{{$item->saldo}}</td>
-              <td>{{$item->saldoRebajado}}</td>
-              <td>{{$item->metodoPago}}</td>
-            </tr>
-    
-            <tr>
-              <td>
-                 <form action="{{route("aplicarAbono")}}" method="GET">
+                <td>
+                  <form action="{{route("aplicarAbono")}}" method="GET">
+                      @csrf
+                      <input type="hidden" name="id" value="{{$item->id}}">
+                      <button class="btnAbonar" type="submit">Aplicar abono</button>
+                    </form>
+                </td>
+                <td>
+                  <form action="{{route("actualizarUsuario")}}" method="GET">
                     @csrf
-                    <input type="hidden" name="id" value="{{$item->id}}">
-                    <button class="btnAbonar" type="submit">Aplicar abono</button>
+                    <button class="btnActualizar" type="submit">Editar</button>
+                    <input type="hidden" value="{{$item->id}}" name="id">
                   </form>
               </td>
-              <td>
-                <form action="{{route("actualizarUsuario")}}" method="GET">
-                  @csrf
-                  <button class="btnActualizar" type="submit">Editar</button>
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                </form>
-            </td>
-              <td>
-                <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-                  @method("delete")
-                  @csrf
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                  <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
-                </form>
-            </td>
-              <td colspan="2">
-                <form action="{{route("prestamoDeudaForm")}}" method="GET">
-                  @csrf
-                  <input type="hidden" value="{{$item->id}}" name="id">
-                  <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
-                </form>
-            </td>
+                <td>
+                  <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+                    @method("delete")
+                    @csrf
+                    <input type="hidden" value="{{$item->id}}" name="id">
+                    <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                  </form>
+              </td>
+                <td colspan="2">
+                  <form action="{{route("prestamoDeudaForm")}}" method="GET">
+                    @csrf
+                    <input type="hidden" value="{{$item->id}}" name="id">
+                    <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
+                  </form>
+              </td>
             </tr>
-            <td style="background-color: white" colspan="5"></td>
-            @endif
-            @endforeach
-    
-            </table>
+          </table>
+          @endif
+          @endforeach
       <div>
     </div>
 
@@ -178,31 +177,75 @@
 
     <div class="table-container">
       <div class="table-responsive">
+        @foreach ($usuarios as $item)
+        @if ($item->metodoPago == "Quincenal")
+        <select class="my-select">
+          <option disabled selected>{{$item->nombre}}</option>
+          <option disabled>Teléfono: {{$item->telefono}}</option>
+          <option disabled>Prestamo: {{$item->prestamo}}</option>
+          <option disabled>Saldo inicial: {{$item->saldo}}</option>
+          <option disabled>Saldo actual: {{$item->saldoRebajado}}</option>
+          <option disabled>Metodo de pago: {{$item->metodoPago}}</option>
+          <table>
+        </select>
         <table>
-          @foreach ($usuarios as $item)
-          @if ($item->metodoPago == "Quincenal")
           <tr>
-            <td colspan="5" style="text-align: center">{{$item->nombre}}</td>
+              <td>
+                <form action="{{route("aplicarAbono")}}" method="GET">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$item->id}}">
+                    <button class="btnAbonar" type="submit">Aplicar abono</button>
+                  </form>
+              </td>
+              <td>
+                <form action="{{route("actualizarUsuario")}}" method="GET">
+                  @csrf
+                  <button class="btnActualizar" type="submit">Editar</button>
+                  <input type="hidden" value="{{$item->id}}" name="id">
+                </form>
+            </td>
+              <td>
+                <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
+                  @method("delete")
+                  @csrf
+                  <input type="hidden" value="{{$item->id}}" name="id">
+                  <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
+                </form>
+            </td>
+              <td colspan="2">
+                <form action="{{route("prestamoDeudaForm")}}" method="GET">
+                  @csrf
+                  <input type="hidden" value="{{$item->id}}" name="id">
+                  <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
+                </form>
+            </td>
           </tr>
-          <tr>
-            <td>Teléfono</td>
-            <td>Prestamo</td>
-            <td>Saldo inicial</td>
-            <td>Saldo actual</td>
-            <td>Metodo de pago</td>
-          </tr>
-  
-          <tr>
-            <td>{{$item->telefono}}</td>
-            <td>{{$item->prestamo}}</td>
-            <td>{{$item->saldo}}</td>
-            <td>{{$item->saldoRebajado}}</td>
-            <td>{{$item->metodoPago}}</td>
-          </tr>
-  
-          <tr>
+        </table>
+        @endif
+        @endforeach
+    <div>
+  </div>
+
+  <br><br>
+  <h1>Tabla Clientes Mensual</h1>
+
+  <div class="table-container">
+    <div class="table-responsive">
+      @foreach ($usuarios as $item)
+      @if ($item->metodoPago == "Diario")
+      <select class="my-select">
+        <option disabled selected>{{$item->nombre}}</option>
+        <option disabled>Teléfono: {{$item->telefono}}</option>
+        <option disabled>Prestamo: {{$item->prestamo}}</option>
+        <option disabled>Saldo inicial: {{$item->saldo}}</option>
+        <option disabled>Saldo actual: {{$item->saldoRebajado}}</option>
+        <option disabled>Metodo de pago: {{$item->metodoPago}}</option>
+        <table>
+      </select>
+      <table>
+        <tr>
             <td>
-               <form action="{{route("aplicarAbono")}}" method="GET">
+              <form action="{{route("aplicarAbono")}}" method="GET">
                   @csrf
                   <input type="hidden" name="id" value="{{$item->id}}">
                   <button class="btnAbonar" type="submit">Aplicar abono</button>
@@ -230,79 +273,10 @@
                 <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
               </form>
           </td>
-          </tr>
-          <td style="background-color: white" colspan="5"></td>
-          @endif
-          @endforeach
-  
-          </table>
-    <div>
-  </div>
-
-  <br><br>
-  <h1>Tabla Clientes Mensual</h1>
-
-  <div class="table-container">
-    <div class="table-responsive">
-      <table>
-        @foreach ($usuarios as $item)
-        @if ($item->metodoPago == "Mensual")
-        <tr>
-          <td colspan="5" style="text-align: center">{{$item->nombre}}</td>
         </tr>
-        
-        <tr>
-          <td>Teléfono</td>
-          <td>Prestamo</td>
-          <td>Saldo inicial</td>
-          <td>Saldo actual</td>
-          <td>Metodo de pago</td>
-        </tr>
-
-        <tr>
-          <td>{{$item->telefono}}</td>
-          <td>{{$item->prestamo}}</td>
-          <td>{{$item->saldo}}</td>
-          <td>{{$item->saldoRebajado}}</td>
-          <td>{{$item->metodoPago}}</td>
-        </tr>
-
-        <tr>
-          <td>
-             <form action="{{route("aplicarAbono")}}" method="GET">
-                @csrf
-                <input type="hidden" name="id" value="{{$item->id}}">
-                <button class="btnAbonar" type="submit">Aplicar abono</button>
-              </form>
-          </td>
-          <td>
-            <form action="{{route("actualizarUsuario")}}" method="GET">
-              @csrf
-              <button class="btnActualizar" type="submit">Editar</button>
-              <input type="hidden" value="{{$item->id}}" name="id">
-            </form>
-        </td>
-          <td>
-            <form id="eliminarUsuarioForm" action="{{route("eliminarUsuario")}}" method="POST">
-              @method("delete")
-              @csrf
-              <input type="hidden" value="{{$item->id}}" name="id">
-              <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?')">Eliminar</button>
-            </form>
-        </td>
-          <td colspan="2">
-            <form action="{{route("prestamoDeudaForm")}}" method="GET">
-              @csrf
-              <input type="hidden" value="{{$item->id}}" name="id">
-              <button class="btnPrestamoDeuda" type="submit">Solicitar un prestamo con deuda</button>
-            </form>
-        </td>
-        </tr>
-        <td style="background-color: white" colspan="5"></td>
-        @endif
-        @endforeach
-
-        </table>
+      </table>
+      @endif
+      @endforeach
   <div>
 </div>
 </body>

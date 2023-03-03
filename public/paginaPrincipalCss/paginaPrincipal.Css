@@ -143,3 +143,26 @@ h1{
   border: none;
   outline: none;
 }
+
+
+
+/*selecionar opciones*/
+
+.my-select {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+}
+
+
+.my-select option {
+  color: black; /* change to the color you prefer */
+  background-color: white; /* change to the color you prefer */
+  font: 110% Arial;
+}
