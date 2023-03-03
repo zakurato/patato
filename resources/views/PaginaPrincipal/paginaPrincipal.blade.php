@@ -182,7 +182,6 @@
           <tr>
             <td colspan="5" style="text-align: center">{{$item->nombre}}</td>
           </tr>
-          
           <tr>
             <td>Teléfono</td>
             <td>Prestamo</td>
@@ -230,6 +229,7 @@
               </form>
           </td>
           </tr>
+          <td style="background-color: white" colspan="5"></td>
           @endif
           @endforeach
   
