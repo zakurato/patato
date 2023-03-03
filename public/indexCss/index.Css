@@ -1,15 +1,16 @@
 body {
-	background-color: rgba(0, 0, 0, 0.575);
+	background-color: white;
 }
 
 .container {
 	background-color: white;
 	margin: auto;
-	width: 50%;
+	width: 70%;
 	padding: 20px;
 	text-align: center;
 	border-radius: 10px;
-	margin-top: 100px;
+	margin-top: 150px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Sombra */
 }
 
 h1 {
