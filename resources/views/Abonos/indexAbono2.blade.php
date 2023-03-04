@@ -19,6 +19,8 @@
       <br>
       {{session("abonoAplicado")}}
       {{session("abonoExcedido")}}
+      {{session("abonoEliminado")}}
+
       <br>
       <form action="">
       <label for="nombre">Nombre completo:</label>

@@ -210,7 +210,7 @@
   <div class="table-container">
     <div class="table-responsive">
       @foreach ($usuarios as $item)
-      @if ($item->metodoPago == "Diario")
+      @if ($item->metodoPago == "Mensual")
       <select class="my-select">
         <option disabled selected>{{$item->nombre}}</option>
         <option disabled>Teléfono: {{$item->telefono}}</option>

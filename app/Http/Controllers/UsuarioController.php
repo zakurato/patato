@@ -204,4 +204,30 @@ class UsuarioController extends Controller
         return redirect()->route("paginaPrincipal"); 
     }
 
+    public function eliminarAbono(Request $request){
+
+        $abonoEncontrado = Abono::where('id',$request->id)->first(); // abono encontrado
+
+        $deleteAbono = Abono::where('id',$abonoEncontrado->id)->delete(); // abono eliminado
+    
+        $usuario=Usuario::where('cedula',$abonoEncontrado->cedula)->first(); //obtengo los datos completos del usuario
+
+        $usuario->saldoRebajado = $usuario->saldoRebajado + $abonoEncontrado->abono;
+
+        $usuario->save();
+
+        $abonos=Abono::where('cedula',$usuario->cedula)->get(); //obtengo los datos completos del usuario
+
+        session()->flash("abonoEliminado","Abono eliminado correctamente");
+
+        $abonoUltimo=Abono::where('cedula',$usuario->cedula)->latest()->first(); //obtengo los datos del ultimo abono
+
+        if($abonoUltimo == null){
+            return view("Abonos.indexAbono2",compact("usuario","abonos","abonoUltimo"));
+        }else{
+            return view("Abonos.indexAbono",compact("usuario","abonos","abonoUltimo"));
+        }
+        
+    }
+
 }

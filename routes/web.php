@@ -41,4 +41,6 @@ Route::get("/prestamoDeudaForm",[UsuarioController::class,"prestamoDeudaForm"])-
 
 Route::get("/storeActualizarUsuarioPrestamoDeuda",[UsuarioController::class,"storeActualizarUsuarioPrestamoDeuda"])->name("storeActualizarUsuarioPrestamoDeuda")->middleware("auth");
 
+Route::delete("/eliminarAbono",[UsuarioController::class,"eliminarAbono"])->name("eliminarAbono")->middleware("auth");
+
 

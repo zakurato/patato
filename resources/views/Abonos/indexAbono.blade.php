@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset("usuariosCss/abono.Css")}}">
+    <link rel="stylesheet" href="{{asset("usuariosCss/abono.Css?1.0")}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Abonos</title>
@@ -27,6 +27,8 @@
       <br>
       {{session("abonoAplicado")}}
       {{session("abonoExcedido")}}
+      {{session("abonoEliminado")}}
+
 
       <br>
       <form action="">
@@ -76,7 +78,7 @@
                 <th>Nombre</th>
                 <th>Abono</th>
                 <th>Saldo actual</th>
-                <th>Fecha</th>
+                <th colspan="2">Fecha</th>
               </tr>
             </thead>
             <tbody>
@@ -87,6 +89,14 @@
                 <td>{{$item->abono}}</td>
                 <td>{{$item->saldo}}</td>
                 <td>{{$item->created_at}}</td>
+                <td>
+                  <form id="eliminarUsuarioForm" action="{{route("eliminarAbono")}}" method="POST">
+                    @method("delete")
+                    @csrf
+                    <input type="hidden" value="{{$item->id}}" name="id">
+                    <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este abono?')">Eliminar abono</button>
+                  </form>
+              </td>
               </tr>
               @endforeach
             </tbody>
