@@ -90,12 +90,16 @@
                 <td>{{$item->saldo}}</td>
                 <td>{{$item->created_at}}</td>
                 <td>
+
+                  @if ($item->created_at == $abonoUltimo->created_at)
                   <form id="eliminarUsuarioForm" action="{{route("eliminarAbono")}}" method="POST">
                     @method("delete")
                     @csrf
                     <input type="hidden" value="{{$item->id}}" name="id">
                     <button class="btnEliminar" type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este abono?')">Eliminar abono</button>
                   </form>
+                  @endif
+
               </td>
               </tr>
               @endforeach
