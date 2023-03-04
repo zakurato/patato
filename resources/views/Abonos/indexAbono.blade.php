@@ -12,7 +12,7 @@
 <body>
     <nav>
         <ul>
-          <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
+          <li><a href="{{route("tablaClientes", ['valor' => $usuario->metodoPago])}}">Inicio</a></li>
           <li class="search">
             <form action="{{route("aplicarAbono")}}" method="GET">
               @csrf

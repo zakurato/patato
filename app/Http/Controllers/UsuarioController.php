@@ -67,6 +67,7 @@ class UsuarioController extends Controller
     public function actualizarUsuario(Request $request){
         $usuario = Usuario::where('id',$request->id)->first();
         return view("Usuarios.usuarioFormularioActualizar",compact("usuario"));
+
     }
 
     public function storeActualizarUsuario(Request $request){
@@ -91,9 +92,11 @@ class UsuarioController extends Controller
             $usuario->interesesGanados = $interesesGanados;
     
             $usuario->save();
-    
+
+            $valor = $request->metodoPago;
+
             session()->flash("actualizadoCorrectamente","Cliente actualizado correctamente");
-            return redirect()->route("paginaPrincipal");
+            return redirect()->route("tablaClientes",compact("valor"));
         }else{
 
             $usuarios = Usuario::all();
@@ -127,9 +130,10 @@ class UsuarioController extends Controller
                 $usuario->interesesGanados = $interesesGanados;
         
                 $usuario->save();
-        
+                $valor = $request->metodoPago;
+
                 session()->flash("actualizadoCorrectamente","Cliente actualizado correctamente");
-                return redirect()->route("paginaPrincipal");
+                return redirect()->route("tablaClientes",compact("valor"));
             }
         }
 
@@ -228,6 +232,22 @@ class UsuarioController extends Controller
             return view("Abonos.indexAbono",compact("usuario","abonos","abonoUltimo"));
         }
         
+    }
+    
+    public function tablaClientes(Request $request){
+        $tipoPago = $request->valor;
+        $txtBuscar = $request->input('txtBuscar');
+
+        if($tipoPago == null){
+            $tipoPago = $request->tipoPago;
+            $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
+            return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago"));
+        }
+
+
+        $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
+        return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago"));
+
     }
 
 }

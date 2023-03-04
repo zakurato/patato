@@ -43,4 +43,7 @@ Route::get("/storeActualizarUsuarioPrestamoDeuda",[UsuarioController::class,"sto
 
 Route::delete("/eliminarAbono",[UsuarioController::class,"eliminarAbono"])->name("eliminarAbono")->middleware("auth");
 
+Route::get("/tablaClientes",[UsuarioController::class,"tablaClientes"])->name("tablaClientes")->middleware("auth");
+
+
 

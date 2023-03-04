@@ -166,3 +166,12 @@ h1{
   background-color: white; /* change to the color you prefer */
   font: 110% Arial;
 }
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+}
