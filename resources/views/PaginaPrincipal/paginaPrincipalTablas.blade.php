@@ -14,7 +14,7 @@
     <nav>
         <ul>
           <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
-          <li><a href="{{route("formRegistrarUsuario")}}">Registrar usuario</a></li>
+          <li><a href="{{route("formRegistrarUsuario2", ['valor' => $tipoPago])}}">Registrar usuario</a></li>
           <li class="search">
             <form action="{{route("tablaClientes")}}" method="GET">
               @csrf

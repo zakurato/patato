@@ -10,7 +10,7 @@
 <body>
     <nav>
         <ul>
-          <li><a href="{{route("paginaPrincipal")}}">Inicio</a></li>
+          <li><a href="{{route("tablaClientes", ['valor' => $usuario->metodoPago])}}">Inicio</a></li>
         </ul>
       </nav>
       <br>
@@ -24,13 +24,13 @@
         <input type="hidden" value="{{$usuario->cedula}}" name="oldCedula">
 
         <label for="cedula">Cédula:</label>
-        <input type="text" name="cedula" value="{{$usuario->cedula}}" readonly>
+        <input style="background-color: cadetblue" type="text" name="cedula" value="{{$usuario->cedula}}" readonly>
         <label for="nombre">Nombre completo:</label>
-        <input type="text" name="nombre" value="{{$usuario->nombre}}" readonly>
+        <input style="background-color: cadetblue" type="text" name="nombre" value="{{$usuario->nombre}}" readonly>
         <label for="telefono">Teléfono:</label>
-        <input type="tel" name="telefono" value="{{$usuario->telefono}}" readonly>
+        <input style="background-color: cadetblue" type="tel" name="telefono" value="{{$usuario->telefono}}" readonly>
         <label for="direccion">Dirección:</label>
-        <textarea id="direccion" name="direccion" rows="4" readonly>{{$usuario->direccion}}</textarea>
+        <textarea style="background-color: cadetblue" id="direccion" name="direccion" rows="4" readonly>{{$usuario->direccion}}</textarea>
         <label for="prestamo">Préstamo:</label>
         <input type="number" name="prestamo"  required inputmode="numeric">
         <label for="intereses">Digite el % en intereses ganados:</label>

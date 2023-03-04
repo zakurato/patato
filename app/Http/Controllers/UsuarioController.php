@@ -13,6 +13,12 @@ class UsuarioController extends Controller
         return view("Usuarios.usuarioFormulario");
     }
 
+    public function formRegistrarUsuario2(Request $request){
+
+        $tipoPago = $request->valor;
+        return view("Usuarios.usuarioFormulario2",compact("tipoPago"));
+    }
+
     public function storeUsuario(Request $request){
     
         $usuarios = Usuario::all();
@@ -51,6 +57,58 @@ class UsuarioController extends Controller
 
         }
     }
+
+    public function storeUsuario2(Request $request){
+    
+        $usuarios = Usuario::all();
+        $existe = 0;
+
+        foreach($usuarios as $item){
+            if($item->cedula == $request->cedula){
+                $existe = 1;
+            }
+        }
+
+        if($existe == 1){
+            session()->flash("usuarioExiste","El nombre del cliente que desea registrar ya existe");
+            return redirect()->route("formRegistrarUsuario2")->withInput();
+        }else{
+
+        $interesesGanados = $request->prestamo * ($request->intereses/100);
+        $saldo = $request->prestamo + $interesesGanados;
+
+        $usuario = new Usuario();
+        $usuario->cedula = $request->cedula;
+        $usuario->nombre = $request->nombre;
+        $usuario->telefono = $request->telefono;
+        $usuario->direccion = $request->direccion;
+        $usuario->prestamo = $request->prestamo;
+        $usuario->intereses = $request->intereses;
+        $usuario->metodoPago = $request->metodoPago;
+        $usuario->saldo = $saldo;
+        $usuario->saldoRebajado = $saldo;
+        $usuario->interesesGanados = $interesesGanados;
+
+        $usuario->save();
+        session()->flash("guardadoCorrectamente","Cliente guardado correctamente");
+
+        $valor = $request->metodoPago;
+
+        return redirect()->route("tablaClientes",compact("valor"));
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public function eliminarUsuario(Request $request){
 

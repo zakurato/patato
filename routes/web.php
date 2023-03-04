@@ -25,7 +25,13 @@ Route::post("/deslogueo",[HomeController::class,"deslogueo"])->name("deslogueo")
 
 Route::get("/formRegistrarUsuario",[UsuarioController::class,"formRegistrarUsuario"])->name("formRegistrarUsuario")->middleware("auth");
 
+Route::get("/formRegistrarUsuario2",[UsuarioController::class,"formRegistrarUsuario2"])->name("formRegistrarUsuario2")->middleware("auth");
+
+
 Route::post("/storeUsuario",[UsuarioController::class,"storeUsuario"])->name("storeUsuario")->middleware("auth");
+
+Route::post("/storeUsuario2",[UsuarioController::class,"storeUsuario2"])->name("storeUsuario2")->middleware("auth");
+
 
 Route::delete("/eliminarUsuario",[UsuarioController::class,"eliminarUsuario"])->name("eliminarUsuario")->middleware("auth");
 
