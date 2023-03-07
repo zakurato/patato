@@ -252,7 +252,6 @@ class UsuarioController extends Controller
     }
 
     public function storeActualizarUsuarioPrestamoDeuda(Request $request){
-        //return $request;
 
         $usuario = Usuario::where('id',$request->id)->first();
 
@@ -263,7 +262,9 @@ class UsuarioController extends Controller
 
         $usuario->save();
 
-        return redirect()->route("paginaPrincipal"); 
+        $valor = $request->metodoPago;
+
+        return redirect()->route("tablaClientes",compact("valor")); 
     }
 
     public function eliminarAbono(Request $request){

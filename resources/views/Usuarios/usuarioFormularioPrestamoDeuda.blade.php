@@ -18,7 +18,7 @@
       {{session("usuarioNoExiste")}}
 
       <h1>Formulario prestamo con Deuda</h1>
-      <form action="{{route("storeActualizarUsuarioPrestamoDeuda")}}" method="GET">
+      <form action="{{route("storeActualizarUsuarioPrestamoDeuda",["valor" => $usuario->metodoPago])}}" method="GET">
         @csrf
         <input type="hidden" value="{{$usuario->id}}" name="id">
         <input type="hidden" value="{{$usuario->cedula}}" name="oldCedula">

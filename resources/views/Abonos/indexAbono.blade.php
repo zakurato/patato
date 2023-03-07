@@ -13,14 +13,6 @@
     <nav>
         <ul>
           <li><a href="{{route("tablaClientes", ['valor' => $usuario->metodoPago])}}">Inicio</a></li>
-          <li class="search">
-            <form action="{{route("aplicarAbono")}}" method="GET">
-              @csrf
-              <input type="hidden" name="id" value="{{$usuario->id}}">
-              <input type="text" name="txtBuscar" placeholder="Buscar por fecha...">
-              <button style="color: black" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-          </li>
         </ul>
       </nav>
 
