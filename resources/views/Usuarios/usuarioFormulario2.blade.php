@@ -22,7 +22,7 @@
 
 
         <label for="cedula">Cédula:</label>
-        <input type="text" name="cedula" value="{{old('cedula')}}" required>
+        <input type="text" name="cedula" value="{{old('cedula')}}" autocomplete="off" required>
         <label for="nombre">Nombre completo:</label>
         <input type="text" name="nombre" value="{{old('nombre')}}" required>
         <label for="telefono">Teléfono:</label>
