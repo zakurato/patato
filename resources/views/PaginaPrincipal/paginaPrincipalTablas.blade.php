@@ -78,7 +78,7 @@
                   @php
                     $date = date('Y-m-d', strtotime($item->created_at));
                   @endphp
-<button class="btnPrestamoDeuda" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$item->telefono}}&text=Prestamo:%20₡{{$item->saldo}}%0ASaldo actual:%20₡{{$item->saldoRebajado}}%0AMetodo de pago:%20{{$item->metodoPago}}%0AFecha de inicio del prestamo:%20{{$date}}'">Enviar saldo</button>    
+<button class="btnPrestamoDeuda" onclick="location.href='https://api.whatsapp.com/send?phone=+506{{$item->telefono}}&text=Prestamo:%20₡{{$item->prestamo}}%0ASaldo actual:%20₡{{$item->saldoRebajado}}%0AMetodo de pago:%20{{$item->metodoPago}}%0AFecha de inicio del prestamo:%20{{$date}}'">Enviar saldo</button>    
               </td>
             </tr>
           </table>
