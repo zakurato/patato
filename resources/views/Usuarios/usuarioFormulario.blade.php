@@ -19,8 +19,6 @@
       <h1>Formulario de préstamos</h1>
       <form action="{{route("storeUsuario")}}" method="POST">
         @csrf
-
-
         <label for="cedula">Cédula:</label>
         <input type="text" name="cedula" value="{{old('cedula')}}" autocomplete="off" required>
         <label for="nombre">Nombre completo:</label>
@@ -31,7 +29,7 @@
         <textarea id="direccion" name="direccion" rows="4" required>{{old("direccion")}}</textarea>
         <label for="prestamo">Préstamo:</label>
         <input type="number" name="prestamo" value="{{old("prestamo")}}" required inputmode="numeric">
-        <label for="intereses">Digite el % en intereses ganados:</label>
+        <label for="intereses">Digite el monto en intereses ganados:</label>
         <input type="number" name="intereses" value="{{old("intereses")}}" required inputmode="numeric">
         <label for="periodo">Selecciona el metodo de pago:</label>
         <select name="metodoPago" required>

@@ -35,8 +35,8 @@ class UsuarioController extends Controller
             return redirect()->route("formRegistrarUsuario")->withInput();
         }else{
 
-        $interesesGanados = $request->prestamo * ($request->intereses/100);
-        $saldo = $request->prestamo + $interesesGanados;
+        //$interesesGanados = $request->prestamo * ($request->intereses/100);
+        $saldo = $request->prestamo + $request->intereses;
 
         $usuario = new Usuario();
         $usuario->cedula = $request->cedula;
@@ -48,7 +48,7 @@ class UsuarioController extends Controller
         $usuario->metodoPago = $request->metodoPago;
         $usuario->saldo = $saldo;
         $usuario->saldoRebajado = $saldo;
-        $usuario->interesesGanados = $interesesGanados;
+        $usuario->interesesGanados = $request->intereses;
 
         $usuario->save();
         session()->flash("guardadoCorrectamente","Cliente guardado correctamente");
@@ -74,8 +74,8 @@ class UsuarioController extends Controller
             return redirect()->route("formRegistrarUsuario2")->withInput();
         }else{
 
-        $interesesGanados = $request->prestamo * ($request->intereses/100);
-        $saldo = $request->prestamo + $interesesGanados;
+        //$interesesGanados = $request->prestamo * ($request->intereses/100);
+        $saldo = $request->prestamo + $request->intereses;
 
         $usuario = new Usuario();
         $usuario->cedula = $request->cedula;
@@ -87,7 +87,7 @@ class UsuarioController extends Controller
         $usuario->metodoPago = $request->metodoPago;
         $usuario->saldo = $saldo;
         $usuario->saldoRebajado = $saldo;
-        $usuario->interesesGanados = $interesesGanados;
+        $usuario->interesesGanados = $request->intereses;
 
         $usuario->save();
         session()->flash("guardadoCorrectamente","Cliente guardado correctamente");

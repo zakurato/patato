@@ -31,7 +31,7 @@
         <textarea id="direccion" name="direccion" rows="4" required>{{old("direccion")}}</textarea>
         <label for="prestamo">Préstamo:</label>
         <input type="number" name="prestamo" value="{{old("prestamo")}}" required inputmode="numeric">
-        <label for="intereses">Digite el % en intereses ganados:</label>
+        <label for="intereses">Digite el monto en intereses ganados:</label>
         <input type="number" name="intereses" value="{{old("intereses")}}" required inputmode="numeric">
         <label for="periodo">Selecciona el metodo de pago:</label>
         <select name="metodoPago" required>
