@@ -79,18 +79,40 @@
                                 <table>
                             </select>
                         @endif
+                        @if ($item2->estado == '1' && $item2->idFK == $item->id && $item->metodoPago == 'Quincenal')
+                            <select class="my-select" style="background-color: green">
+                                <option disabled selected>{{ $item->nombre }}</option>
+                                <option disabled>Teléfono: {{ $item->telefono }}</option>
+                                <option disabled>Prestamo: {{ $item->prestamo }}</option>
+                                <option disabled>Saldo inicial: {{ $item->saldo }}</option>
+                                <option disabled>Saldo actual: {{ $item->saldoRebajado }}</option>
+                                <option disabled>Metodo de pago: {{ $item->metodoPago }}</option>
+                                <table>
+                            </select>
+                        @endif
+                        @if ($item2->estado == '-1' && $item2->idFK == $item->id && $item->metodoPago == 'Quincenal')
+                            <select class="my-select" style="background-color: crimson">
+                                <option disabled selected>{{ $item->nombre }}</option>
+                                <option disabled>Teléfono: {{ $item->telefono }}</option>
+                                <option disabled>Prestamo: {{ $item->prestamo }}</option>
+                                <option disabled>Saldo inicial: {{ $item->saldo }}</option>
+                                <option disabled>Saldo actual: {{ $item->saldoRebajado }}</option>
+                                <option disabled>Metodo de pago: {{ $item->metodoPago }}</option>
+                                <table>
+                            </select>
+                        @endif
+                        @if ($item2->estado == '0' && $item2->idFK == $item->id && $item->metodoPago == 'Quincenal')
+                            <select class="my-select" style="background-color: black">
+                                <option disabled selected>{{ $item->nombre }}</option>
+                                <option disabled>Teléfono: {{ $item->telefono }}</option>
+                                <option disabled>Prestamo: {{ $item->prestamo }}</option>
+                                <option disabled>Saldo inicial: {{ $item->saldo }}</option>
+                                <option disabled>Saldo actual: {{ $item->saldoRebajado }}</option>
+                                <option disabled>Metodo de pago: {{ $item->metodoPago }}</option>
+                                <table>
+                            </select>
+                        @endif
                     @endforeach
-                    @if ($item->metodoPago == 'Quincenal')
-                        <select class="my-select" style="background-color: black">
-                            <option disabled selected>{{ $item->nombre }}</option>
-                            <option disabled>Teléfono: {{ $item->telefono }}</option>
-                            <option disabled>Prestamo: {{ $item->prestamo }}</option>
-                            <option disabled>Saldo inicial: {{ $item->saldo }}</option>
-                            <option disabled>Saldo actual: {{ $item->saldoRebajado }}</option>
-                            <option disabled>Metodo de pago: {{ $item->metodoPago }}</option>
-                            <table>
-                        </select>
-                    @endif
                     <table>
                         <tr>
                             <td>

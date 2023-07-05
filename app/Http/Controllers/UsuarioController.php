@@ -50,8 +50,13 @@ class UsuarioController extends Controller
         $usuario->saldo = $saldo;
         $usuario->saldoRebajado = $saldo;
         $usuario->interesesGanados = $request->intereses;
-
         $usuario->save();
+
+        $estado = new Estado();
+        $estado->idFK = $usuario->id;
+        $estado->estado = 1;
+        $estado->save();
+
         session()->flash("guardadoCorrectamente","Cliente guardado correctamente");
 
         return redirect()->route("paginaPrincipal");
@@ -89,8 +94,13 @@ class UsuarioController extends Controller
         $usuario->saldo = $saldo;
         $usuario->saldoRebajado = $saldo;
         $usuario->interesesGanados = $request->intereses;
-
         $usuario->save();
+
+        $estado = new Estado();
+        $estado->idFK = $usuario->id;
+        $estado->estado = 1;
+        $estado->save();
+
         session()->flash("guardadoCorrectamente","Cliente guardado correctamente");
 
         $valor = $request->metodoPago;
@@ -101,16 +111,6 @@ class UsuarioController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public function eliminarUsuario(Request $request){
 
         $usuario = Usuario::where('id',$request->id)->first(); // busco la cedula del usuario para eliminar los abonos
@@ -118,6 +118,7 @@ class UsuarioController extends Controller
 
         $delete=Usuario::where('id',$request->id)->delete();
 
+        $deleteEstado = Estado::where("idFK", $request->id)->delete();
 
         session()->flash("eliminadoCorrectamente","Cliente eliminado correctamente");
         return redirect()->route("paginaPrincipal");
@@ -303,24 +304,44 @@ class UsuarioController extends Controller
         $txtBuscar = $request->input('txtBuscar');
         $estados = Estado::all();
         $diaSemana = date('N');
+        $diaActual = date("d"); // Obtiene el día actual
+
 
         //si el dia de la semana es miercoles pasar todos los estados "1" a color negro o estado "0"
         //si el dia de la semana es miercoles pasar todos los estados "0" a "-1"
         //si el dia de la semana es miercoles los estados "-1" quedan en "-1"
-            foreach($estados as $item){
-                
-                if($diaSemana == "3" && $item->estado == 0){
-                    $item->estado = -1;
-                    $item->save();
+        $todosUsuarios = Usuario::all();
+        foreach($todosUsuarios as $item2){
+            if($item2->metodoPago == "Semanal"){
+                foreach($estados as $item){
+                    if($diaSemana == "3" && $item->estado == 0){
+                        $item->estado = -1;
+                        $item->save();
+                    }
+                    else if($diaSemana == "3" && $item->estado == -1){
+                        $item->estado = -1;
+                        $item->save();
+                    }else if($diaSemana == "4" && $item->estado == 1){
+                        $item->estado = 0;
+                        $item->save();
+                    }
                 }
-                else if($diaSemana == "3" && $item->estado == -1){
-                    $item->estado = -1;
-                    $item->save();
-                }else if($diaSemana == "4" && $item->estado == 1){
-                    $item->estado = 0;
-                    $item->save();
+            }else if($item2->metodoPago == "Quincenal"){
+                foreach($estados as $item){
+                    if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
+                        $item->estado = -1;
+                        $item->save();
+                    }
+                    else if($diaActual == "5" && $item->estado == -1 || $diaActual == "20" && $item->estado == -1){
+                        $item->estado = -1;
+                        $item->save();
+                    }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1){
+                        $item->estado = 0;
+                        $item->save();
+                    }
                 }
             }
+        }
         
 
         if($tipoPago == null){
