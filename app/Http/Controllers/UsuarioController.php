@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Abono;
+use App\Models\Estado;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
@@ -223,7 +224,6 @@ class UsuarioController extends Controller
         $id = $request->id;
 
         $usuario=Usuario::where('id',$request->id)->first(); //obtengo los datos completos del usuario
-
         //return $request;
         $abono = new Abono();
 
@@ -236,6 +236,11 @@ class UsuarioController extends Controller
         $usuario->save();
 
         $abonos=Abono::where('cedula',$usuario->cedula)->get(); //obtengo los datos completos del usuario
+
+
+        $cambioEstadoSiPaga = Estado::where([["idFK","=",$usuario->id]])->first();
+        $cambioEstadoSiPaga->estado = 1;
+        $cambioEstadoSiPaga->save();
 
         session()->flash("abonoAplicado","Abono aplicado correctamente");
         return redirect()->route("aplicarAbono",compact("id"));
@@ -296,16 +301,37 @@ class UsuarioController extends Controller
     public function tablaClientes(Request $request){
         $tipoPago = $request->valor;
         $txtBuscar = $request->input('txtBuscar');
+        $estados = Estado::all();
+        $diaSemana = date('N');
+
+        //si el dia de la semana es miercoles pasar todos los estados "1" a color negro o estado "0"
+        //si el dia de la semana es miercoles pasar todos los estados "0" a "-1"
+        //si el dia de la semana es miercoles los estados "-1" quedan en "-1"
+            foreach($estados as $item){
+                
+                if($diaSemana == "3" && $item->estado == 0){
+                    $item->estado = -1;
+                    $item->save();
+                }
+                else if($diaSemana == "3" && $item->estado == -1){
+                    $item->estado = -1;
+                    $item->save();
+                }else if($diaSemana == "4" && $item->estado == 1){
+                    $item->estado = 0;
+                    $item->save();
+                }
+            }
+        
 
         if($tipoPago == null){
             $tipoPago = $request->tipoPago;
             $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
-            return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago"));
+            return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago","estados"));
         }
 
 
         $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
-        return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago"));
+        return view("PaginaPrincipal.paginaPrincipalTablas",compact("usuarios","txtBuscar","tipoPago","estados"));
 
     }
 
