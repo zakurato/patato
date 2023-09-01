@@ -243,7 +243,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAbonoOpeCuadros",
+                url: "http://54.175.133.168/storeAplicarAbonoOpeCuadros",
                 data: {
                     tipoAhorro: tipoAhorro,
                     opeCuadros: opeCuadros,
@@ -290,7 +290,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroEmergencia",
+                url: "http://54.175.133.168/storeAplicarAhorroEmergencia",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroEmergencia: ahorroEmergencia,
@@ -337,7 +337,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroRopa",
+                url: "http://54.175.133.168/storeAplicarAhorroRopa",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroRopa: ahorroRopa,
@@ -383,7 +383,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroSiempre",
+                url: "http://54.175.133.168/storeAplicarAhorroSiempre",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroSiempre: ahorroSiempre,
@@ -429,7 +429,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroAutoNuevo",
+                url: "http://54.175.133.168/storeAplicarAhorroAutoNuevo",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroAutoNuevo: ahorroAutoNuevo,
@@ -475,7 +475,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroCompraLote",
+                url: "http://54.175.133.168/storeAplicarAhorroCompraLote",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroCompraLote: ahorroCompraLote,
@@ -521,7 +521,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarAhorroBici",
+                url: "http://54.175.133.168/storeAplicarAhorroBici",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroBici: ahorroBici,
@@ -567,7 +567,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarMantAuto",
+                url: "http://54.175.133.168/storeAplicarMantAuto",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroMantAuto: ahorroMantAuto,
@@ -615,7 +615,7 @@
             // Realiza la solicitud AJAX
             $.ajax({
                 type: "GET",
-                url: "http://localhost/patato/public/storeAplicarMarchamo",
+                url: "http://54.175.133.168/storeAplicarMarchamo",
                 data: {
                     tipoAhorro: tipoAhorro,
                     ahorroMarchamo: ahorroMarchamo,
