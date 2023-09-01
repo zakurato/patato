@@ -53,3 +53,20 @@ Route::get("/tablaClientes",[UsuarioController::class,"tablaClientes"])->name("t
 
 
 
+
+
+//steven
+Route::get("/steven",[HomeController::class,"steven"])->name("steven")->middleware("auth");
+Route::get("/storeAplicarAbonoOpeCuadros",[HomeController::class,"storeAplicarAbonoOpeCuadros"])->name("storeAplicarAbonoOpeCuadros")->middleware("auth");
+Route::get("/storeAplicarAhorroEmergencia",[HomeController::class,"storeAplicarAhorroEmergencia"])->name("storeAplicarAhorroEmergencia")->middleware("auth");
+Route::get("/storeAplicarAhorroRopa",[HomeController::class,"storeAplicarAhorroRopa"])->name("storeAplicarAhorroRopa")->middleware("auth");
+Route::get("/storeAplicarAhorroSiempre",[HomeController::class,"storeAplicarAhorroSiempre"])->name("storeAplicarAhorroSiempre")->middleware("auth");
+Route::get("/storeAplicarAhorroAutoNuevo",[HomeController::class,"storeAplicarAhorroAutoNuevo"])->name("storeAplicarAhorroAutoNuevo")->middleware("auth");
+Route::get("/storeAplicarAhorroCompraLote",[HomeController::class,"storeAplicarAhorroCompraLote"])->name("storeAplicarAhorroCompraLote")->middleware("auth");
+Route::get("/storeAplicarAhorroBici",[HomeController::class,"storeAplicarAhorroBici"])->name("storeAplicarAhorroBici")->middleware("auth");
+Route::get("/storeAplicarMantAuto",[HomeController::class,"storeAplicarMantAuto"])->name("storeAplicarMantAuto")->middleware("auth");
+
+
+
+Route::get("/storeAplicarMarchamo",[HomeController::class,"storeAplicarMarchamo"])->name("storeAplicarMarchamo")->middleware("auth");
+
