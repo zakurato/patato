@@ -215,6 +215,11 @@
         </div>
         <div style="height: 50px"></div>
     </form>
+
+    
+    <div style="height: 50px"></div>
+    <h2>Ahorro total: ₡{{$sumaTotal}}</h2>
+
 </body>
 
 

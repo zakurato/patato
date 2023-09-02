@@ -77,8 +77,8 @@ class HomeController extends Controller
     public function steven(){
 
         $ahorros = Ahorro::all();
-
-        return view("steven.formSteven",compact("ahorros"));
+        $sumaTotal = Ahorro::sum("monto");
+        return view("steven.formSteven",compact("ahorros","sumaTotal"));
     }
 
 
