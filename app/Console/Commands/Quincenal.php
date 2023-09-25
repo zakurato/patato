@@ -6,6 +6,8 @@ use App\Models\Estado;
 use App\Models\Usuario;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+
 
 class Quincenal extends Command
 {
@@ -26,18 +28,7 @@ class Quincenal extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
-    {
-        while (true) { // Iniciar un bucle infinito
-            $this->updateEstados();
-            sleep(60); // Esperar 60 segundos antes de ejecutar nuevamente
-        }
-    }
-
-    /**
-     * Actualizar los estados de acuerdo a la lógica requerida.
-     */
-    private function updateEstados(): void
+    public function handle(Request $request)
     {
         //comando para que se ejecute para siempre esto se debe pegar donde uno hace el pull en EC2
         //nohup php artisan schedule:work > /dev/null 2>&1 &
@@ -93,6 +84,7 @@ class Quincenal extends Command
                 }
             }
         }
-        
     }
+
+
 }
