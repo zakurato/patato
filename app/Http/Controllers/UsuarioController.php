@@ -302,11 +302,11 @@ class UsuarioController extends Controller
     public function tablaClientes(Request $request){
         $tipoPago = $request->valor;
         $txtBuscar = $request->input('txtBuscar');
+
         $estados = Estado::all();
         $diaSemana = date('N');
         $diaActual = date("d"); // Obtiene el día actual
-
-
+        
         //si el dia de la semana es miercoles pasar todos los estados "1" a color negro o estado "0"
         //si el dia de la semana es miercoles pasar todos los estados "0" a "-1"
         //si el dia de la semana es miercoles los estados "-1" quedan en "-1"
@@ -326,7 +326,9 @@ class UsuarioController extends Controller
                         $item->save();
                     }
                 }
-            }else if($item2->metodoPago == "Quincenal"){
+            }
+            
+            else if($item2->metodoPago == "Quincenal"){
                 foreach($estados as $item){
                     if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
                         $item->estado = -1;
