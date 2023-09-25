@@ -37,7 +37,8 @@ class Quincenal extends Command
         //me tira un pid un numero y debo escribirlo aqui como este ejemplo
         //kill 12345
 
-
+        $texto = "hola";
+        Storage::append("archivo.txt",$texto);
         
         $estados = Estado::all();
         $diaSemana = date('N');
