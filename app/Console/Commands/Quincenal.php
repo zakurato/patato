@@ -39,9 +39,9 @@ class Quincenal extends Command
      */
     private function updateEstados(): void
     {
+        //comando para que se ejecute para siempre esto se debe pegar donde uno hace el pull en EC2
+        //nohup php artisan schedule:work > /dev/null 2>&1 &
 
-        $texto = "hola";
-        Storage::append("archivo.txt",$texto);
         
         $estados = Estado::all();
         $diaSemana = date('N');
