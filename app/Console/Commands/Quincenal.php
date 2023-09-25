@@ -41,6 +41,11 @@ class Quincenal extends Command
     {
         //comando para que se ejecute para siempre esto se debe pegar donde uno hace el pull en EC2
         //nohup php artisan schedule:work > /dev/null 2>&1 &
+        //comando para detener ese comando schedule:work
+        //ps aux | grep "php artisan schedule:work"
+        //me tira un pid un numero y debo escribirlo aqui como este ejemplo
+        //kill 12345
+
 
         
         $estados = Estado::all();
