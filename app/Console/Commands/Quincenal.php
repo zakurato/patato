@@ -39,6 +39,9 @@ class Quincenal extends Command
      */
     private function updateEstados(): void
     {
+
+        $texto = "hola";
+        Storage::append("archivo.txt",$texto);
         
         $estados = Estado::all();
         $diaSemana = date('N');
@@ -64,7 +67,12 @@ class Quincenal extends Command
                         $item->save();
                     }
                 }
-            }else if($item2->metodoPago == "Quincenal"){
+            }
+        }
+            
+            
+        foreach($todosUsuarios as $item2){
+             if($item2->metodoPago == "Quincenal"){
                 foreach($estados as $item){
                     if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
                         $item->estado = -1;
