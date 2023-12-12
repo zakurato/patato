@@ -80,7 +80,7 @@
           <br>
           //si el dia de la semana es miercoles(3) los estados "-1" quedan en "-1"
           <br>
-          //si el dia de la semana es jueves(4) pasar todos los estados "1" a color negro o estado "0"
+          //si el dia de la semana es jueves(4) y la hora actual esta entre las (1am hasta las 8pm) pasar todos los estados "1" a color negro o estado "0"
         </p>
       </div>
 
@@ -92,7 +92,7 @@
           <br>
           //si el dia actual es (5) y el estado es (-1) || si el dia actual es (20) y el estado es (-1) pasan a (-1)
           <br>
-          //si el dia actual es (6) y el estado es (1) || si el dia actual es (21) y el estado es (1) pasan a (0)
+          //si el dia actual es (6) y el estado es (1) || si el dia actual es (21) y el estado es (1)  y la hora actual esta entre las (1am hasta las 8pm) pasan a (0)
         </p>
       </div>
 

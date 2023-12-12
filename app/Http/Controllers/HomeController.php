@@ -62,10 +62,10 @@ class HomeController extends Controller
                         $item->estado = -1;
                         $item->save();
                     }else if($diaSemana == "4" && $item->estado == 1){
-                        //if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                        if($horaActual >= "01:00" && $horaActual <= "20:00"){
                             $item->estado = 0;
                             $item->save();
-                        //}
+                        }
                     }
                 }
             }
@@ -83,10 +83,10 @@ class HomeController extends Controller
                         $item->estado = -1;
                         $item->save();
                     }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1){
-                        //if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                        if($horaActual >= "01:00" && $horaActual <= "20:00"){
                             $item->estado = 0;
                             $item->save();
-                        //}
+                        }
                     }
                 }
             }
