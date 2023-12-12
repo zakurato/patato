@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ahorro;
+use App\Models\Estado;
 use App\Models\Usuario;
 use DateTime;
 use Illuminate\Http\Request;
@@ -32,6 +33,79 @@ class HomeController extends Controller
 
         //return $request;
 
+
+
+
+        $estados = Estado::all();
+        $diaSemana = date('N');
+        $diaActual = date("d"); // Obtiene el día actual
+
+        //Para obtener la hora actual de Costa Rica
+        date_default_timezone_set('America/Costa_Rica'); // Configura la zona horaria a Costa Rica
+        $fechaActual = new DateTime(); // Crea un objeto DateTime con la fecha y hora actual en la zona horaria de Costa Rica
+        $horaActual = $fechaActual->format('H:i'); // Obtiene la hora actual en formato 'HH:mm:ss' en la zona horaria de Costa Rica
+
+        //return $diaSemana;
+        
+        //si el dia de la semana es miercoles pasar todos los estados "1" a color negro o estado "0"
+        //si el dia de la semana es miercoles pasar todos los estados "0" a "-1"
+        //si el dia de la semana es miercoles los estados "-1" quedan en "-1"
+        $todosUsuarios = Usuario::all();
+        foreach($todosUsuarios as $item2){
+            if($item2->metodoPago == "Semanal"){
+                foreach($estados as $item){
+                    if($diaSemana == "3" && $item->estado == 0){
+                        $item->estado = -1;
+                        $item->save();
+                    }
+                    else if($diaSemana == "3" && $item->estado == -1){
+                        $item->estado = -1;
+                        $item->save();
+                    }else if($diaSemana == "4" && $item->estado == 1){
+                        //if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                            $item->estado = 0;
+                            $item->save();
+                        //}
+                    }
+                }
+            }
+        }
+            
+            
+        foreach($todosUsuarios as $item2){
+             if($item2->metodoPago == "Quincenal"){
+                foreach($estados as $item){
+                    if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
+                        $item->estado = -1;
+                        $item->save();
+                    }
+                    else if($diaActual == "5" && $item->estado == -1 || $diaActual == "20" && $item->estado == -1){
+                        $item->estado = -1;
+                        $item->save();
+                    }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1){
+                        //if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                            $item->estado = 0;
+                            $item->save();
+                        //}
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             $sumaAcobrar = Usuario::sum("saldoRebajado");
             $clientes = DB::table('usuarios')->count();
 
@@ -39,7 +113,7 @@ class HomeController extends Controller
             $usuarios = Usuario::where('nombre', 'LIKE', '%'.$txtBuscar.'%')->orderBy('nombre', 'asc')->get();
 
             //$usuarios = Usuario::all();
-            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar","clientes"));
+            return view("PaginaPrincipal.paginaPrincipal",compact("usuarios","txtBuscar","sumaAcobrar","clientes","diaSemana","diaActual","horaActual"));
 
         
     

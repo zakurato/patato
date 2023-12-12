@@ -303,58 +303,6 @@ class UsuarioController extends Controller
     public function tablaClientes(Request $request){
         $tipoPago = $request->valor;
         $txtBuscar = $request->input('txtBuscar');
-
-        $estados = Estado::all();
-        $diaSemana = date('N');
-        $diaActual = date("d"); // Obtiene el día actual
-
-        //Para obtener la hora actual de Costa Rica
-        date_default_timezone_set('America/Costa_Rica'); // Configura la zona horaria a Costa Rica
-        $fechaActual = new DateTime(); // Crea un objeto DateTime con la fecha y hora actual en la zona horaria de Nueva York
-        $horaActual = $fechaActual->format('H:i'); // Obtiene la hora actual en formato 'HH:mm:ss' en la zona horaria de Nueva York
-
-        
-        //si el dia de la semana es miercoles pasar todos los estados "1" a color negro o estado "0"
-        //si el dia de la semana es miercoles pasar todos los estados "0" a "-1"
-        //si el dia de la semana es miercoles los estados "-1" quedan en "-1"
-        $todosUsuarios = Usuario::all();
-        foreach($todosUsuarios as $item2){
-            if($item2->metodoPago == "Semanal"){
-                foreach($estados as $item){
-                    if($diaSemana == "3" && $item->estado == 0){
-                        $item->estado = -1;
-                        $item->save();
-                    }
-                    else if($diaSemana == "3" && $item->estado == -1){
-                        $item->estado = -1;
-                        $item->save();
-                    }else if($diaSemana == "4" && $item->estado == 1){
-                        if($horaActual >= "01:00" && $horaActual <= "04:00"){
-                            $item->estado = 0;
-                            $item->save();
-                        }
-                    }
-                }
-            }
-            
-            else if($item2->metodoPago == "Quincenal"){
-                foreach($estados as $item){
-                    if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
-                        $item->estado = -1;
-                        $item->save();
-                    }
-                    else if($diaActual == "5" && $item->estado == -1 || $diaActual == "20" && $item->estado == -1){
-                        $item->estado = -1;
-                        $item->save();
-                    }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1){
-                        if($horaActual >= "01:00" && $horaActual <= "04:00"){
-                            $item->estado = 0;
-                            $item->save();
-                        }
-                    }
-                }
-            }
-        }
         
 
         if($tipoPago == null){

@@ -66,5 +66,35 @@
         </a>
       </div>
 
+      <div>
+        <h4>Dia actual: {{$diaActual}}</h4>
+        <h4>Dia de la semana: {{$diaSemana}}</h4>
+        <h4>Hora actual: {{$horaActual}}</h4>
+      </div>
+
+      <div>
+        <p>
+          //SEMANAL
+          <br>
+          //si el dia de la semana es miercoles(3) pasar todos los estados "0" a "-1"
+          <br>
+          //si el dia de la semana es miercoles(3) los estados "-1" quedan en "-1"
+          <br>
+          //si el dia de la semana es jueves(4) pasar todos los estados "1" a color negro o estado "0"
+        </p>
+      </div>
+
+      <div>
+        <p>
+          //QUINCENAL
+          <br>
+          //si el dia actual es (5) y el estado es (0) || si el dia actual es (20) y el estado es (0) pasan a (-1)
+          <br>
+          //si el dia actual es (5) y el estado es (-1) || si el dia actual es (20) y el estado es (-1) pasan a (-1)
+          <br>
+          //si el dia actual es (6) y el estado es (1) || si el dia actual es (21) y el estado es (1) pasan a (0)
+        </p>
+      </div>
+
 </body>
 </html>
