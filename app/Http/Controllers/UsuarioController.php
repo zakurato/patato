@@ -303,6 +303,10 @@ class UsuarioController extends Controller
     public function tablaClientes(Request $request){
         $tipoPago = $request->valor;
         $txtBuscar = $request->input('txtBuscar');
+
+        
+        $estados = Estado::all();
+
         
 
         if($tipoPago == null){
