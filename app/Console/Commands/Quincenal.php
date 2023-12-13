@@ -59,17 +59,20 @@ class Quincenal extends Command
         foreach($todosUsuarios as $item2){
             if($item2->metodoPago == "Semanal"){
                 foreach($estados as $item){
-                    if($diaSemana == "3" && $item->estado == 0){
+                    if($diaSemana == "3" && $item->estado == 0 && $item2->id == $item->idFK){
                         $item->estado = -1;
                         $item->save();
+                        break;
                     }
-                    else if($diaSemana == "3" && $item->estado == -1){
+                    else if($diaSemana == "3" && $item->estado == -1 && $item2->id == $item->idFK){
                         $item->estado = -1;
                         $item->save();
-                    }else if($diaSemana == "4" && $item->estado == 1){
-                        if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                        break;
+                    }else if($diaSemana == "4" && $item->estado == 1 && $item2->id == $item->idFK){
+                        if($horaActual >= "01:00" && $horaActual <= "20:00"){
                             $item->estado = 0;
                             $item->save();
+                            break;
                         }
                     }
                 }
@@ -80,15 +83,15 @@ class Quincenal extends Command
         foreach($todosUsuarios as $item2){
              if($item2->metodoPago == "Quincenal"){
                 foreach($estados as $item){
-                    if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0){
+                    if($diaActual == "5" && $item->estado == 0 || $diaActual == "20" && $item->estado == 0 && $item2->id == $item->idFK){
                         $item->estado = -1;
                         $item->save();
                     }
-                    else if($diaActual == "5" && $item->estado == -1 || $diaActual == "20" && $item->estado == -1){
+                    else if($diaActual == "5" && $item->estado == -1 || $diaActual == "20" && $item->estado == -1 && $item2->id == $item->idFK){
                         $item->estado = -1;
                         $item->save();
-                    }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1){
-                        if($horaActual >= "01:00" && $horaActual <= "04:00"){
+                    }else if($diaActual == "6" && $item->estado == 1 || $diaActual == "21" && $item->estado == 1 && $item2->id == $item->idFK){
+                        if($horaActual >= "01:00" && $horaActual <= "20:00"){
                             $item->estado = 0;
                             $item->save();
                         }
