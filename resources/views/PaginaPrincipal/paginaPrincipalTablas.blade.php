@@ -157,7 +157,7 @@
                                 @if ($item2->estado != '1' && $item2->idFK == $item->id && $item->metodoPago == 'Quincenal')
                                     <td colspan="2">
                                         <button class="btnCobrarDeuda"
-                                            onclick="location.href='https://api.whatsapp.com/send?phone=+506{{ $item->telefono }}&text=Quería recordarte amablemente que el pago del abono está pendiente, gracias.'">Cobrar
+                                            onclick="location.href='https://api.whatsapp.com/send?phone=+506{{ $item->telefono }}&text=El pago está pendiente. ¿Podría proporcionármelo a través de SINPE o preferiría que lo recoja personalmente?'">Cobrar
                                             deuda</button>
                                     </td>
                                 @endif
