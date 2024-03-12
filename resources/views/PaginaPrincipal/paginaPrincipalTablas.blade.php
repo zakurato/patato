@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('paginaPrincipalCss/paginaPrincipal.Css?1.0') }}">
+    <link rel="stylesheet" href="{{ asset('paginaPrincipalCss/paginaPrincipal.Css?2.0') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 
@@ -146,6 +146,22 @@
                                     onclick="location.href='https://api.whatsapp.com/send?phone=+506{{ $item->telefono }}&text=Prestamo:%20₡{{ $item->prestamo }}%0ASaldo actual:%20₡{{ $item->saldoRebajado }}%0AMetodo de pago:%20{{ $item->metodoPago }}%0AFecha de inicio del prestamo:%20{{ $date }}'">Enviar
                                     saldo</button>
                             </td>
+                            @foreach ($estados as $item2)
+                                @if ($item2->estado != '1' && $item2->idFK == $item->id && $item->metodoPago == 'Semanal')
+                                    <td colspan="2">
+                                        <button class="btnCobrarDeuda"
+                                            onclick="location.href='https://api.whatsapp.com/send?phone=+506{{ $item->telefono }}&text=Quería recordarte amablemente que el pago del abono está pendiente, gracias.'">Cobrar
+                                            deuda</button>
+                                    </td>
+                                @endif
+                                @if ($item2->estado != '1' && $item2->idFK == $item->id && $item->metodoPago == 'Quincenal')
+                                    <td colspan="2">
+                                        <button class="btnCobrarDeuda"
+                                            onclick="location.href='https://api.whatsapp.com/send?phone=+506{{ $item->telefono }}&text=Quería recordarte amablemente que el pago del abono está pendiente, gracias.'">Cobrar
+                                            deuda</button>
+                                    </td>
+                                @endif
+                            @endforeach
                         </tr>
                     </table>
                 @endif
